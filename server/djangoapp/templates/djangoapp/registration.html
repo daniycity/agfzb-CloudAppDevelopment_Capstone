@@ -6,6 +6,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
     <body>
-    <!--Add a registration form here -->
+     <!--Add a registration form here -->
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Dealer Review</a>
+                </div>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'djangoapp:contact' %}">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <div class="container-fluid m-3">
+            <h2>Sign Up</h2>
+            <form action="{% url 'djangoapp:registration' %}" method="post">
+                {% csrf_token %}
+                {% if message %}
+                <div class="alert alert-warning">
+                    {{ message }}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="username"><b>User Name</b></label>
+                    <input id="username" class="form-control" type="text" placeholder="User Name" name="username" required>
+                    <label for="firstname"><b>First Name</b></label>
+                    <input id="firstname" class="form-control" type="text" placeholder="First Name" name="firstname" required>
+                    <label for="lastname"><b>Last Name</b></label>
+                    <input id="lastname" class="form-control" type="text" placeholder="Last Name" name="lastname" required>
+                    <label for="email"><b>Email</b></label>
+                    <input id="email" class="form-control" type="text" placeholder="Email" name="email" required>
+                    <label for="pwd"><b>Password</b></label>
+                    <input id="pwd" class="form-control" type="password"  placeholder="Password" name="pwd" required>
+                    <input type="hidden" name="template_name" value="{{ template_name }}">
+                </div>
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+            </form>
+        </div>
     </body>
 </html>
