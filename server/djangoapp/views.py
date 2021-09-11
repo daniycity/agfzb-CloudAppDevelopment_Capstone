@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
-# from .models import related models
-# from .restapis import related methods
+from .models import CarDealer, DealerReview, CarMake, CarModel
+from .restapis import get_dealers_from_cf, get_dealer_reviews_from_cf, add_review_to_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -16,6 +16,11 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+ibm_cloud_url = ""
+ibm_cloud_api = ""
+post_review_api = ""
+get_reviews_api = ""
+get_dealerships_api = ""
 
 # Create an `about` view to render a static about page
 def about(request):
